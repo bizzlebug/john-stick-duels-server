@@ -1,0 +1,15 @@
+{
+  "name": "john-stick-duels-server",
+  "version": "1.0.0",
+  "description": "Matchmaking server for John Stick Duels mode",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.14.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
