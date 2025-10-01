@@ -300,6 +300,17 @@ wss.on('connection', (ws) => {
 });
 
 server.on('request', (req, res) => {
+  // Add CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    res.writeHead(200);
+    res.end();
+    return;
+  }
+
   if (req.url === '/status') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({
@@ -318,4 +329,5 @@ server.listen(PORT, () => {
   console.log(`🚀 John Stick Duels Server running on port ${PORT}`);
   console.log(`📊 Status: http://localhost:${PORT}/status`);
   console.log(`🔌 WebSocket: ws://localhost:${PORT}`);
+
 });
